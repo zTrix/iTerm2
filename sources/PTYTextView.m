@@ -6371,7 +6371,7 @@ static double EuclideanDistance(NSPoint p1, NSPoint p2) {
 #pragma mark - Accessibility
 
 - (BOOL)accessibilityIsIgnored {
-    return NO;
+    return YES;
 }
 
 - (NSArray *)accessibilityAttributeNames {
@@ -6383,6 +6383,7 @@ static double EuclideanDistance(NSPoint p1, NSPoint p2) {
 }
 
 - (id)accessibilityAttributeValue:(NSString *)attribute forParameter:(id)parameter {
+    return [super accessibilityAttributeValue:attribute forParameter:parameter];
     BOOL handled;
     id result = [_accessibilityHelper accessibilityAttributeValue:attribute
                                                      forParameter:parameter
@@ -6411,6 +6412,7 @@ static double EuclideanDistance(NSPoint p1, NSPoint p2) {
 }
 
 - (id)accessibilityAttributeValue:(NSString *)attribute {
+    return [super accessibilityAttributeValue:attribute];
     BOOL handled;
     id result = [_accessibilityHelper accessibilityAttributeValue:attribute handled:&handled];
     if (!handled) {
